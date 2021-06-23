@@ -86,6 +86,7 @@ class Data:
                 if new_data != old_data:
                     self.data = new_data
                     print("Data updated")
+                    speak("The Database has been updated successfully.")
                     break
                 time.sleep(5)
 
@@ -169,9 +170,11 @@ def main():
             data.update_data()
 
         if result == "":
-            speak("No data Available or Registered. Till Now.")
+            speak("Till Now, No data Available or Registered.")
         elif result:
             speak(result)
+        elif result is None and text != "stop" and text != "update" and text != "":
+            speak("No country is available on that name. Please pronounce the country name clearly.")
 
         if text.find(END_PHRASE) != -1:  # stop loop
             print("Exit")
